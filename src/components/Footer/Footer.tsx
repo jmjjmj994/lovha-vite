@@ -1,4 +1,8 @@
 function Footer() {
-  return <footer>footer</footer>;
+  return (
+    <footer>
+      <div className="footer-wrapper wrapper">footer</div>
+    </footer>
+  );
 }
 export default Footer;

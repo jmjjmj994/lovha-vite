@@ -97,3 +97,16 @@ p {
   grid-template-columns: auto;
   grid-template-rows: 5rem 1fr 5rem;
 }
+
+/* Wrappers for max-width */
+.header-wrapper {
+}
+.navbar-wrapper {
+}
+.main-wrapper {
+}
+.footer-wrapper {
+}
+.wrapper {
+}
+/* Wrappers for max-width */

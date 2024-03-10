@@ -6,7 +6,9 @@ type NavbarProps = {
 function Navbar({ active, handleToggler }: NavbarProps) {
   return (
     <nav>
-      <button onClick={() => handleToggler()}>close</button>
+      <div className="navbar-wrapper wrapper">
+        <button onClick={() => handleToggler()}>close</button>
+      </div>
     </nav>
   );
 }

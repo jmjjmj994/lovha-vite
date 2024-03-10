@@ -5,7 +5,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <main>
+      <main className="main-wrapper wrapper">
         <Outlet />
       </main>
       <Footer />

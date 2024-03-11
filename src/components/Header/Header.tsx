@@ -7,7 +7,11 @@ function Header() {
       <div className="header-wrapper wrapper h-full bg-blue-500 flex justify-between items-center">
         <h1>Logo</h1>
         <Navbar active={active} handleToggler={handleToggler} />
-        <button className="lg:hidden" onClick={() => handleToggler()}>
+        <button
+          aria-label="open"
+          className="lg:hidden"
+          onClick={() => handleToggler()}
+        >
           menu
         </button>
       </div>

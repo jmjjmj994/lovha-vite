@@ -37,7 +37,7 @@ function Navbar({ active, handleToggler }: NavbarProps) {
       `}
     >
       <div className="flex flex-col justify-center h-[5rem] lg:hidden bg-blue-500">
-        <button className="self-end" onClick={() => handleToggler()}>
+        <button aria-label='close' className="self-end" onClick={() => handleToggler()}>
           close
         </button>
       </div>

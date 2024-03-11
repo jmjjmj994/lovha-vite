@@ -1,5 +1,5 @@
 import Navbar from '../Navbar';
-import useToggler from '../../hooks/toggler/useToggler';
+import useToggler from '../../hooks/use-toggler';
 function Header() {
   const [active, handleToggler] = useToggler();
   return (

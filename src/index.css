@@ -83,6 +83,10 @@ p {
   grid-template-columns: auto;
   grid-template-rows: 5rem 1fr 5rem;
 }
+
+.app-grid {
+  display: grid;
+}
 /* ==== Grid ==== */
 
 /* Wrappers for max-width */

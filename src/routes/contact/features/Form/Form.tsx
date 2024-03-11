@@ -1,5 +1,14 @@
 import { useState } from 'react';
 
+type FormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  telephone: string;
+  subject: string;
+  textArea: string;
+};
+
 function Form() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -7,7 +16,7 @@ function Form() {
   const [telephone, setTelephone] = useState('');
   const [subject, setSubject] = useState('');
   const [textArea, setTextArea] = useState('');
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
     email: '',

@@ -1,4 +1,10 @@
+import { useState } from 'react';
 function Form() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [telephone, setTelephone] = useState('');
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
   }
@@ -16,15 +22,28 @@ function Form() {
 function ContactFormInput() {
   return (
     <>
-      <div className="flex flex-col">
-        <label htmlFor="fullt-navn">Fullt navn</label>
-        <input
-          className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
-          type="text"
-          id="fullt-navn"
-          name="fullt-navn"
-          placeholder="Fullt Navn"
-        />
+      <div className="flex flex-wrap justify-between gap-[20px]">
+        <div className="flex flex-col grow">
+          <label htmlFor="fornavn">Fornavn</label>
+          <input
+            className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
+            type="text"
+            id="fornavn"
+            name="fornavn"
+            placeholder="Fornavn"
+          />
+        </div>
+
+        <div className="flex flex-col grow">
+          <label htmlFor="etternavn">Etternavn</label>
+          <input
+            className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
+            type="text"
+            id="etternavn"
+            name="etternavn"
+            placeholder="Etternavn"
+          />
+        </div>
       </div>
       <div className="flex flex-col">
         <label htmlFor="e-postadresse">E-postadresse</label>
@@ -48,6 +67,7 @@ function ContactFormInput() {
       </div>
       <div className="flex flex-col">
         <label htmlFor="emne">Emne</label>
+
         <input
           className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
           type="text"

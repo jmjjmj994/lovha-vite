@@ -1,15 +1,20 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useFetcher, useLocation } from 'react-router-dom';
 import navbarLinks from './NavbarLinks';
+
 type NavbarProps = {
   active: boolean;
   handleToggler: () => void;
 };
 
 function Navbar({ active, handleToggler }: NavbarProps) {
+  const { pathname } = useLocation();
+
   function close() {
     handleToggler();
   }
+
+
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {

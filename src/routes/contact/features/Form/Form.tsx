@@ -193,6 +193,7 @@ function ContactFormInput({
       <fieldset className="flex flex-col ">
         <legend>Emne</legend>
         <select
+          aria-label="subject"
           required
           value={subject}
           onChange={(e) =>

@@ -61,16 +61,16 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   font-weight: 700;
 }
 
 p {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-weight: 400;
 }
 .small-test {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-weight: 300;
 }
 
@@ -84,12 +84,11 @@ p {
   grid-template-rows: 5rem 1fr auto;
 }
 
-.app-grid {
-  display: grid;
-  grid-template-columns: minmax(200px, 50rem);
-  place-content: center;
-  gap: 20px;
-  grid-auto-rows: 15rem;
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 /* ==== Grid ==== */
 

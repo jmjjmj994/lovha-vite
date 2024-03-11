@@ -92,14 +92,21 @@ p {
 }
 /* ==== Grid ==== */
 
-/* Wrappers for max-width */
+/* Wrappers for element s which Layout render */
 .header-wrapper {
 }
 
-.main-wrapper {
-}
 .footer-wrapper {
+}
+.block-wrapper {
+}
+/* Wrappers for elements which Layout render */
+
+/* Wrappers for content dependent of components */
+.app-wrapper {
+  max-width: 90%;
+  width: 100%;
 }
 .wrapper {
 }
-/* Wrappers for max-width */
+/* Wrappers for content dependent of components */

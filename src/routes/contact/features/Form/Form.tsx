@@ -64,7 +64,6 @@ function Form() {
 
     const validated = validate();
     if (validated) {
-      console.log('valid', formData);
       setFirstName('');
       setLastName('');
       setEmail('');

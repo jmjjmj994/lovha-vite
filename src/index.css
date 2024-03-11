@@ -86,6 +86,10 @@ p {
 
 .app-grid {
   display: grid;
+  grid-template-columns: minmax(200px, 50rem);
+  place-content: center;
+  gap: 20px;
+  grid-auto-rows: 15rem;
 }
 /* ==== Grid ==== */
 

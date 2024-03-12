@@ -1,5 +1,6 @@
 import { useState } from 'react';
-
+const emailID = import.meta.env.VITE_EMAIL_SERVICE_ID
+console.log(emailID)
 type FormData = {
   firstName: string;
   lastName: string;
@@ -158,7 +159,7 @@ function ContactFormInput({
       <div className="flex flex-col">
         <label htmlFor="email">E-postadresse</label>
         <input
-        required
+          required
           pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
           title="Ugyldig e-postadresse"
           className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"

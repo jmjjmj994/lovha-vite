@@ -1,5 +1,4 @@
-function ErrorHandler(error) {
-    console.log(error, ' Error handler')
+function ErrorHandler(error: string) {
   return <label htmlFor={error}>{error}</label>;
 }
 export default ErrorHandler;

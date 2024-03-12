@@ -1,16 +1,16 @@
-function Validate(
-  formData,
-  setError,
-  firstNameRef,
-  lastNameRef,
-  emailRef,
-  subjectRef,
-  telephoneRef,
-  textAreaRef
-) {
-  console.log(formData, firstNameRef);
-  const { firstName, lastName, email, telephone, subject, textArea } = formData;
+import { FormData, InputError, ContactFormInputRefs } from '../Form';
 
+function Validate(
+  formData: FormData,
+  setError: (arg: InputError) => void,
+  firstNameRef: React.RefObject<HTMLInputElement> | null,
+  lastNameRef: HTMLInputElement | null,
+  emailRef: HTMLInputElement | null,
+  subjectRef: HTMLSelectElement | null,
+  telephoneRef: HTMLInputElement | null,
+  textAreaRef: HTMLTextAreaElement | null
+) {
+  const { firstName, lastName, email, telephone, subject, textArea } = formData;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const telephoneRegex = /^\d{8}$/;
   const inputError = {
@@ -21,6 +21,7 @@ function Validate(
     subject: '',
     textArea: '',
   };
+
   if (firstName.trim() === '') {
     inputError.firstName = 'First name is required';
     firstNameRef.current.style = 'outline: 1px solid red';

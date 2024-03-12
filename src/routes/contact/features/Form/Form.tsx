@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 const emailID = import.meta.env.VITE_EMAIL_SERVICE_ID;
 const templateID = import.meta.env.VITE_TEMPLATE_ID;
@@ -14,12 +14,12 @@ type FormData = {
 };
 
 function Form() {
-  /*   const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [telephone, setTelephone] = useState('');
-  const [subject, setSubject] = useState('');
-  const [textArea, setTextArea] = useState(''); */
+  const firstNameRef = useRef<HTMLInputElement>(null);
+  const lastNameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const telephoneRef = useRef<HTMLInputElement>(null);
+  const subjectRef = useRef<HTMLInputElement>(null);
+  const textAreaRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -28,23 +28,61 @@ function Form() {
     subject: '',
     textArea: '',
   });
+  const [error, setError] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    telephone: '',
+    subject: '',
+    textArea: '',
+  });
+  console.log(error);
 
   function handleFormData({ id, value }: { id: string; value: string }) {
     setFormData((previous) => ({ ...previous, [id]: value }));
+    setError((previous) => ({ ...previous, [id]: '' }));
   }
 
   function validate() {
     const { firstName, lastName, email, telephone, subject, textArea } =
       formData;
-    let isValid = false;
-    if (firstName && lastName && email && telephone && subject && textArea)
-      isValid = true;
-
-    if (isValid) {
-      return true;
-    } else {
-      return null;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const telephoneRegex = /^\d{8}$/;
+    const inputError = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      telephone: '',
+      subject: '',
+      textArea: '',
+    };
+    if (firstName.trim() === '') {
+      inputError.firstName = 'First name is required';
     }
+
+    if (lastName.trim() === '') {
+      inputError.lastName = 'Last name is required';
+    }
+
+    if (!emailRegex.test(email)) {
+      inputError.email = 'Invalid email address';
+    }
+
+    if (!telephoneRegex.test(telephone)) {
+      inputError.telephone = 'Invalid telephone number';
+    }
+
+    if (subject.trim() === '') {
+      inputError.subject = 'Subject is required';
+    }
+
+    if (textArea.trim() === '') {
+      inputError.textArea = 'Message is required';
+    }
+
+    setError(inputError);
+
+    return Object.values(inputError).every((error) => error === '');
   }
   function sendEmail() {
     const template = {
@@ -60,21 +98,24 @@ function Form() {
       .send(emailID, templateID, template, publicKey)
       .then((response) => {
         console.log('Email sent!', response);
-        formData.firstName = ''
-        formData.lastName = ''
-        formData.email = ''
-        formData.subject = ''
-        formData.telephone = ''
-        formData.textArea = ''
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          telephone: '',
+          subject: '',
+          textArea: '',
+        });
       })
       .catch((error) => {
         console.error('Error sending email:', error);
       });
   }
-console.log(formData)
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const validated = validate();
+    console.log(validated);
     if (validated) sendEmail();
   }
 
@@ -84,7 +125,16 @@ console.log(formData)
       className="flex flex-col gap-[20px] max-w-[50rem] w-full px-5 "
     >
       <h1 className="text-left">Kontakt Oss</h1>
-      <ContactFormInput onInputChange={handleFormData} formData={formData} />
+      <ContactFormInput
+        onInputChange={handleFormData}
+        formData={formData}
+        firstNameRef={firstNameRef}
+        lastNameRef={lastNameRef}
+        emailRef={emailRef}
+        telephoneRef={telephoneRef}
+        subjectRef={subjectRef}
+        textAreaRef={textAreaRef}
+      />
     </form>
   );
 }
@@ -99,7 +149,8 @@ type ContactFormInputProps = {
   textArea: string;
 };
 
-function ContactFormInput({ onInputChange, formData }) {
+function ContactFormInput({ onInputChange, formData, ...refs }) {
+  console.log(refs);
   const { firstName, lastName, email, telephone, subject, textArea } = formData;
   return (
     <>
@@ -107,11 +158,11 @@ function ContactFormInput({ onInputChange, formData }) {
         <div className="flex flex-col grow">
           <label htmlFor="first-name">Fornavn</label>
           <input
-            required
             className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
             type="text"
             id="firstName"
             name="firstName"
+            ref={refs.firstNameRef}
             placeholder="Fornavn"
             value={firstName}
             onChange={(e) =>
@@ -123,7 +174,6 @@ function ContactFormInput({ onInputChange, formData }) {
         <div className="flex flex-col grow">
           <label htmlFor="lastName">Etternavn</label>
           <input
-            required
             className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
             type="text"
             id="lastName"
@@ -139,9 +189,6 @@ function ContactFormInput({ onInputChange, formData }) {
       <div className="flex flex-col">
         <label htmlFor="email">E-postadresse</label>
         <input
-          required
-          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-          title="Ugyldig e-postadresse"
           className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
           type="email"
           id="email"
@@ -156,10 +203,6 @@ function ContactFormInput({ onInputChange, formData }) {
       <div className="flex flex-col">
         <label htmlFor="telephone">Telefon</label>
         <input
-          required
-          pattern="[0-9+-. ]+"
-          maxLength={8}
-          title="Ugyldig telefon"
           className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
           type="tel"
           id="telephone"
@@ -176,7 +219,6 @@ function ContactFormInput({ onInputChange, formData }) {
         <legend>Emne</legend>
         <select
           aria-label="subject"
-          required
           value={subject}
           onChange={(e) =>
             onInputChange({ id: 'subject', value: e.target.value })
@@ -196,7 +238,6 @@ function ContactFormInput({ onInputChange, formData }) {
       <div className="flex flex-col">
         <label htmlFor="message">Melding</label>
         <textarea
-          required
           maxLength={250}
           className="pl-2 rounded-sm bg-gray-200"
           name="message"

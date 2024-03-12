@@ -6,24 +6,24 @@ const emailID = import.meta.env.VITE_EMAIL_SERVICE_ID;
 const templateID = import.meta.env.VITE_TEMPLATE_ID;
 const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
-type FormData = {
+interface GenericState {
   firstName: string;
   lastName: string;
   email: string;
   telephone: string;
   subject: string;
   textArea: string;
-};
+}
 
 function Form() {
-  const firstNameRef = useRef<HTMLInputElement>(null);
-  const lastNameRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const telephoneRef = useRef<HTMLInputElement>(null);
-  const subjectRef = useRef<HTMLInputElement>(null);
-  const textAreaRef = useRef<HTMLInputElement>(null);
+  const firstNameRef = useRef<HTMLInputElement | null>(null);
+  const lastNameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const telephoneRef = useRef<HTMLInputElement | null>(null);
+  const subjectRef = useRef<HTMLInputElement | null>(null);
+  const textAreaRef = useRef<HTMLInputElement | null>(null);
 
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<GenericState>({
     firstName: '',
     lastName: '',
     email: '',
@@ -31,7 +31,7 @@ function Form() {
     subject: '',
     textArea: '',
   });
-  const [error, setError] = useState({
+  const [error, setError] = useState<GenericState>({
     firstName: '',
     lastName: '',
     email: '',
@@ -67,12 +67,11 @@ function Form() {
           subject: '',
           textArea: '',
         });
-        firstNameRef.current.style = 'outline:none';
-        lastNameRef.current.style = 'outline:none';
-        emailRef.current.style = 'outline:none';
-        telephoneRef.current.style = 'outline:none';
-        subjectRef.current.style = 'outline:none';
-        textAreaRef.current.style = 'outline:none';
+        if (firstNameRef.current) firstNameRef.current.style.outline = 'none';
+        if (lastNameRef.current) lastNameRef.current.style.outline = 'none';
+        if (emailRef.current) emailRef.current.style.outline = 'none';
+        if (subjectRef.current) subjectRef.current.style.outline = 'none';
+        if (textAreaRef.current) textAreaRef.current.style.outline = 'none';
       })
       .catch((error) => {
         console.error('Error sending email:', error);

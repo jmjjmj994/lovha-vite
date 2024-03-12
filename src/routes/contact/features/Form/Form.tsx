@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 const emailID = import.meta.env.VITE_EMAIL_SERVICE_ID;
 const templateID = import.meta.env.VITE_TEMPLATE_ID;
@@ -123,6 +123,12 @@ function Form() {
           subject: '',
           textArea: '',
         });
+        firstNameRef.current.style = 'outline:none';
+        lastNameRef.current.style = 'outline:none';
+        emailRef.current.style = 'outline:none';
+        telephoneRef.current.style = 'outline:none';
+        subjectRef.current.style = 'outline:none';
+        textAreaRef.current.style = 'outline:none';
       })
       .catch((error) => {
         console.error('Error sending email:', error);
@@ -176,7 +182,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
   return (
     <>
       <div className="flex flex-wrap justify-between gap-[20px]">
-        <div className="flex flex-col grow bg-orange-500 min-h-[6rem]">
+        <div className="flex flex-col grow  min-h-[6rem]">
           <label htmlFor="first-name">Fornavn</label>
           <input
             className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
@@ -193,7 +199,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
           {error.firstName && errorHandler(error.firstName)}
         </div>
 
-        <div className="flex flex-col grow min-h-[6rem] bg-blue-500">
+        <div className="flex flex-col grow min-h-[6rem]">
           <label htmlFor="lastName">Etternavn</label>
           <input
             className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
@@ -210,7 +216,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
           {error.lastName && errorHandler(error.lastName)}
         </div>
       </div>
-      <div className="flex flex-col min-h-[6rem] bg-blue-500">
+      <div className="flex flex-col min-h-[6rem]">
         <label htmlFor="email">E-postadresse</label>
         <input
           className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
@@ -226,7 +232,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
         />
         {error.email && errorHandler(error.email)}
       </div>
-      <div className="flex flex-col min-h-[6rem] bg-blue-500">
+      <div className="flex flex-col min-h-[6rem] ">
         <label htmlFor="telephone">Telefon</label>
         <input
           className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
@@ -243,7 +249,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
         {error.telephone && errorHandler(error.telephone)}
       </div>
 
-      <fieldset className="flex flex-col min-h-[6rem] bg-blue-500">
+      <fieldset className="flex flex-col min-h-[6rem] ">
         <legend>Emne</legend>
         <select
           aria-label="subject"
@@ -265,7 +271,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
         </select>
         {error.subject && errorHandler(error.subject)}
       </fieldset>
-      <div className="flex flex-col min-h-[12rem] bg-blue-500">
+      <div className="flex flex-col min-h-[12rem] 0">
         <label htmlFor="message">Melding</label>
         <textarea
           maxLength={250}

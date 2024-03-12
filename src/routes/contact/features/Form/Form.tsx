@@ -15,13 +15,26 @@ interface GenericState {
   textArea: string;
 }
 
+type ContactFormInputRefs = {
+  firstNameRef: React.RefObject<HTMLInputElement>;
+  lastNameRef: React.RefObject<HTMLInputElement>;
+  emailRef: React.RefObject<HTMLInputElement>;
+  telephoneRef: React.RefObject<HTMLInputElement>;
+  subjectRef: React.RefObject<HTMLSelectElement>;
+  textAreaRef: React.RefObject<CustomHTMLTextAreaElement>;
+};
+interface CustomHTMLTextAreaElement extends HTMLTextAreaElement {
+  cols?: number;
+  rows?: number;
+}
+
 function Form() {
   const firstNameRef = useRef<HTMLInputElement | null>(null);
   const lastNameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const telephoneRef = useRef<HTMLInputElement | null>(null);
-  const subjectRef = useRef<HTMLInputElement | null>(null);
-  const textAreaRef = useRef<HTMLInputElement | null>(null);
+  const subjectRef = useRef<HTMLSelectElement | null>(null);
+  const textAreaRef = useRef<CustomHTMLTextAreaElement | null>(null);
 
   const [formData, setFormData] = useState<GenericState>({
     firstName: '',
@@ -115,17 +128,16 @@ function Form() {
   );
 }
 
-type ContactFormInputProps = {
+function ContactFormInput({
+  onInputChange,
+  error,
+  formData,
+  ...rest
+}: {
   onInputChange: (data: { id: string; value: string }) => void;
-  firstName: string;
-  lastName: string;
-  email: string;
-  telephone: string;
-  subject: string;
-  textArea: string;
-};
-
-function ContactFormInput({ onInputChange, error, formData, ...refs }) {
+  error: GenericState;
+  formData: GenericState;
+} & ContactFormInputRefs) {
   const { firstName, lastName, email, telephone, subject, textArea } = formData;
 
   return (
@@ -138,7 +150,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
             type="text"
             id="firstName"
             name="firstName"
-            ref={refs.firstNameRef}
+            ref={rest.firstNameRef}
             placeholder="Fornavn"
             value={firstName}
             onChange={(e) =>
@@ -155,7 +167,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
             type="text"
             id="lastName"
             name="lastName"
-            ref={refs.lastNameRef}
+            ref={rest.lastNameRef}
             placeholder="Etternavn"
             value={lastName}
             onChange={(e) =>
@@ -172,7 +184,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
           type="email"
           id="email"
           name="email"
-          ref={refs.emailRef}
+          ref={rest.emailRef}
           placeholder="kontakt@lovhastudio.com"
           value={email}
           onChange={(e) =>
@@ -188,7 +200,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
           type="tel"
           id="telephone"
           name="telephone"
-          ref={refs.telephoneRef}
+          ref={rest.telephoneRef}
           placeholder="12345678"
           value={telephone}
           onChange={(e) =>
@@ -203,7 +215,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
         <select
           aria-label="subject"
           value={subject}
-          ref={refs.subjectRef}
+          ref={rest.subjectRef}
           onChange={(e) =>
             onInputChange({ id: 'subject', value: e.target.value })
           }
@@ -229,7 +241,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
           id="message"
           cols={0}
           rows={5}
-          ref={refs.textAreaRef}
+          ref={rest.textAreaRef}
           value={textArea}
           onChange={(e) =>
             onInputChange({ id: 'textArea', value: e.target.value })

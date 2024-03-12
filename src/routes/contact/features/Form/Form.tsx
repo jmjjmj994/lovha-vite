@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import ErrorHandler from '../helpers/ErrorFeedback';
 import emailjs from '@emailjs/browser';
 const emailID = import.meta.env.VITE_EMAIL_SERVICE_ID;
 const templateID = import.meta.env.VITE_TEMPLATE_ID;
@@ -20,6 +21,7 @@ function Form() {
   const telephoneRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLInputElement>(null);
+
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -173,11 +175,10 @@ type ContactFormInputProps = {
   textArea: string;
 };
 
+
+
 function ContactFormInput({ onInputChange, error, formData, ...refs }) {
   const { firstName, lastName, email, telephone, subject, textArea } = formData;
-  function errorHandler(error) {
-    return <label htmlFor={error}>{error}</label>;
-  }
 
   return (
     <>
@@ -196,7 +197,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
               onInputChange({ id: 'firstName', value: e.target.value })
             }
           />
-          {error.firstName && errorHandler(error.firstName)}
+          {error.firstName && ErrorHandler(error.firstName)}
         </div>
 
         <div className="flex flex-col grow min-h-[6rem]">
@@ -213,7 +214,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
               onInputChange({ id: 'lastName', value: e.target.value })
             }
           />
-          {error.lastName && errorHandler(error.lastName)}
+          {error.lastName && ErrorHandler(error.lastName)}
         </div>
       </div>
       <div className="flex flex-col min-h-[6rem]">
@@ -230,7 +231,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
             onInputChange({ id: 'email', value: e.target.value })
           }
         />
-        {error.email && errorHandler(error.email)}
+        {error.email && ErrorHandler(error.email)}
       </div>
       <div className="flex flex-col min-h-[6rem] ">
         <label htmlFor="telephone">Telefon</label>
@@ -246,7 +247,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
             onInputChange({ id: 'telephone', value: e.target.value })
           }
         />
-        {error.telephone && errorHandler(error.telephone)}
+        {error.telephone && ErrorHandler(error.telephone)}
       </div>
 
       <fieldset className="flex flex-col min-h-[6rem] ">
@@ -269,7 +270,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
           <option value="jobb">Jobb i Lovha</option>
           <option value="annet">Annet</option>
         </select>
-        {error.subject && errorHandler(error.subject)}
+        {error.subject && ErrorHandler(error.subject)}
       </fieldset>
       <div className="flex flex-col min-h-[12rem] 0">
         <label htmlFor="message">Melding</label>
@@ -286,7 +287,7 @@ function ContactFormInput({ onInputChange, error, formData, ...refs }) {
             onInputChange({ id: 'textArea', value: e.target.value })
           }
         ></textarea>
-        {error.textArea && errorHandler(error.textArea)}
+        {error.textArea && ErrorHandler(error.textArea)}
       </div>
 
       <button type="submit" className="py-2 lg:py-3 bg-black text-white">

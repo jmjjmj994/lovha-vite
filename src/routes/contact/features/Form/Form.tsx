@@ -158,6 +158,7 @@ function ContactFormInput({
       <div className="flex flex-col">
         <label htmlFor="email">E-postadresse</label>
         <input
+        required
           pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
           title="Ugyldig e-postadresse"
           className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"

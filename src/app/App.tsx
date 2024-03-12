@@ -1,6 +1,6 @@
-import AppGrid from './features/AppGrid';
+import AppLayout from './features/AppLayout';
 function App() {
-  return <AppGrid />;
+  return <AppLayout />;
 }
 
 export default App;

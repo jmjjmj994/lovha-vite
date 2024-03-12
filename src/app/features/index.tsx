@@ -1,2 +1,2 @@
-export * from './AppGrid';
-export { default } from './AppGrid';
+export * from './AppLayout';
+export { default } from './AppLayout';

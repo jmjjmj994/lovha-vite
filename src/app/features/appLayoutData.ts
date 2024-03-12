@@ -1,4 +1,4 @@
-export type AppData = {
+export type AppLayoutData = {
     id: number;
     image: string;
     path: string;
@@ -6,7 +6,7 @@ export type AppData = {
     title: string;
     content: string;
   }
-  export const AppGridData: AppData[] = [
+  export const AppData: AppLayoutData[] = [
     {
       id: 1,
       image: '#',

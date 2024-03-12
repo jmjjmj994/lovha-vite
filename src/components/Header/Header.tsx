@@ -4,7 +4,7 @@ function Header() {
   const [active, handleToggler] = useToggler();
   return (
     <header>
-      <div className="header-wrapper wrapper h-full bg-blue-500 flex justify-between items-center">
+      <div className="header-wrapper block-wrapper h-full bg-blue-500 flex justify-between items-center">
         <h1>Logo</h1>
         <Navbar active={active} handleToggler={handleToggler} />
         <button

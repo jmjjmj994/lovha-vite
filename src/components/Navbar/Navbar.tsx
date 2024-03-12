@@ -1,14 +1,20 @@
 import { useEffect } from 'react';
+import { Link, useFetcher, useLocation } from 'react-router-dom';
 import navbarLinks from './NavbarLinks';
+
 type NavbarProps = {
   active: boolean;
   handleToggler: () => void;
 };
 
 function Navbar({ active, handleToggler }: NavbarProps) {
+  const { pathname } = useLocation();
+
   function close() {
     handleToggler();
   }
+
+
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -37,7 +43,11 @@ function Navbar({ active, handleToggler }: NavbarProps) {
       `}
     >
       <div className="flex flex-col justify-center h-[5rem] lg:hidden bg-blue-500">
-        <button aria-label='close' className="self-end" onClick={() => handleToggler()}>
+        <button
+          aria-label="close"
+          className="self-end"
+          onClick={() => handleToggler()}
+        >
           close
         </button>
       </div>
@@ -45,7 +55,9 @@ function Navbar({ active, handleToggler }: NavbarProps) {
       <ul className="h-full w-full flex flex-col pl-20 pt-20 lg:pl-0 lg:pt-0 lg:flex-row ">
         {navbarLinks.map(({ id, label, path }) => (
           <li className="text-xl mt-12 lg:mt-0" key={id}>
-            <a href={path}>{label}</a>
+            <Link to={path} onClick={() => close()}>
+              {label}
+            </Link>
           </li>
         ))}
       </ul>

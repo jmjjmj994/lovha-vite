@@ -8,7 +8,7 @@ import {
 function Footer() {
   return (
     <footer className="bg-gray-300 text-black">
-      <div className="footer-wrapper wrapper">
+      <div className="footer-wrapper block-wrapper">
         <div className="flex flex-wrap justify-between">
           <div className="mb-4">
             <h2 className="font-bold mb-2">Lovha</h2>

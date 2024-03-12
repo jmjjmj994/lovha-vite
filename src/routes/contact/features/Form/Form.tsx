@@ -14,12 +14,12 @@ type FormData = {
 };
 
 function Form() {
-  const [firstName, setFirstName] = useState('');
+  /*   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [telephone, setTelephone] = useState('');
   const [subject, setSubject] = useState('');
-  const [textArea, setTextArea] = useState('');
+  const [textArea, setTextArea] = useState(''); */
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -30,40 +30,14 @@ function Form() {
   });
 
   function handleFormData({ id, value }: { id: string; value: string }) {
-    switch (id) {
-      case 'firstName':
-        setFirstName(value);
-        break;
-      case 'lastName':
-        setLastName(value);
-        break;
-      case 'email':
-        setEmail(value);
-        break;
-      case 'telephone':
-        setTelephone(value.trim());
-        break;
-      case 'subject':
-        setSubject(value);
-        break;
-      case 'textArea':
-        setTextArea(value);
-        break;
-      default:
-    }
     setFormData((previous) => ({ ...previous, [id]: value }));
   }
 
   function validate() {
+    const { firstName, lastName, email, telephone, subject, textArea } =
+      formData;
     let isValid = false;
-    if (
-      formData.firstName &&
-      formData.lastName &&
-      formData.email &&
-      formData.telephone &&
-      formData.subject &&
-      formData.textArea
-    )
+    if (firstName && lastName && email && telephone && subject && textArea)
       isValid = true;
 
     if (isValid) {
@@ -86,18 +60,18 @@ function Form() {
       .send(emailID, templateID, template, publicKey)
       .then((response) => {
         console.log('Email sent!', response);
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setTelephone('');
-        setSubject('');
-        setTextArea('');
+        formData.firstName = ''
+        formData.lastName = ''
+        formData.email = ''
+        formData.subject = ''
+        formData.telephone = ''
+        formData.textArea = ''
       })
       .catch((error) => {
         console.error('Error sending email:', error);
       });
   }
-
+console.log(formData)
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const validated = validate();
@@ -110,15 +84,7 @@ function Form() {
       className="flex flex-col gap-[20px] max-w-[50rem] w-full px-5 "
     >
       <h1 className="text-left">Kontakt Oss</h1>
-      <ContactFormInput
-        onInputChange={handleFormData}
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        telephone={telephone}
-        subject={subject}
-        textArea={textArea}
-      />
+      <ContactFormInput onInputChange={handleFormData} formData={formData} />
     </form>
   );
 }
@@ -133,15 +99,8 @@ type ContactFormInputProps = {
   textArea: string;
 };
 
-function ContactFormInput({
-  onInputChange,
-  firstName,
-  lastName,
-  email,
-  telephone,
-  subject,
-  textArea,
-}: ContactFormInputProps) {
+function ContactFormInput({ onInputChange, formData }) {
+  const { firstName, lastName, email, telephone, subject, textArea } = formData;
   return (
     <>
       <div className="flex flex-wrap justify-between gap-[20px]">

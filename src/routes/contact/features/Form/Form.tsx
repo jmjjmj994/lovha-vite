@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+const emailID = import.meta.env.VITE_EMAIL_SERVICE_ID;
+const templateID = import.meta.env.VITE_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
 type FormData = {
   firstName: string;
@@ -68,18 +72,36 @@ function Form() {
       return null;
     }
   }
+  function sendEmail() {
+    const template = {
+      to_name: 'Lovha Studio',
+      from_name: `${formData.firstName} ${formData.lastName}`,
+      from_email: formData.email,
+      tel: formData.telephone,
+      subject: formData.subject,
+      message: formData.textArea,
+    };
+    console.log(template, 'template sent');
+    emailjs
+      .send(emailID, templateID, template, publicKey)
+      .then((response) => {
+        console.log('Email sent!', response);
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setTelephone('');
+        setSubject('');
+        setTextArea('');
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+      });
+  }
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-
     const validated = validate();
-    if (validated) {
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-      setTelephone('');
-      setSubject('');
-      setTextArea('');
-    }
+    if (validated) sendEmail();
   }
 
   return (
@@ -158,7 +180,7 @@ function ContactFormInput({
       <div className="flex flex-col">
         <label htmlFor="email">E-postadresse</label>
         <input
-        required
+          required
           pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
           title="Ugyldig e-postadresse"
           className="py-2 lg:py-3 rounded-sm pl-2 bg-gray-200"
@@ -229,7 +251,9 @@ function ContactFormInput({
         ></textarea>
       </div>
 
-      <button className="py-2 lg:py-3 bg-black text-white">Send</button>
+      <button type="submit" className="py-2 lg:py-3 bg-black text-white">
+        Send
+      </button>
     </>
   );
 }

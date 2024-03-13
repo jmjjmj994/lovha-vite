@@ -1,6 +1,21 @@
+import { useEffect, useState } from 'react';
 import { AppData, AppLayoutData } from './appLayoutData';
+import sanityClient from '../../client/client';
 
 function AppLayout() {
+  const [test, setTest] = useState(null);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == 'game'] {
+image
+}`
+      )
+      .then((data) => setTest(data))
+      .catch(console.error);
+  }, []);
+  console.log(test);
   return (
     <div className="flex  flex-col items-center">
       <AppBanner />

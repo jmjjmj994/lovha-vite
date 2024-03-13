@@ -1,13 +1,17 @@
 import {defineField, defineType} from 'sanity'
 
-export const specificType = defineType({
+export const specificGameType = defineType({
   name: 'specific',
-  title: 'specific',
+  title: 'specific game',
   type: 'document',
   fields: [
     defineField({
       name: 'name',
       type: 'string',
+    }),
+    defineField({
+      name: 'image',
+      type: 'image',
     }),
   ],
 })

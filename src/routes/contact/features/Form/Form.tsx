@@ -93,6 +93,7 @@ function Form() {
         if (lastNameRef.current) lastNameRef.current.style.outline = 'none';
         if (emailRef.current) emailRef.current.style.outline = 'none';
         if (subjectRef.current) subjectRef.current.style.outline = 'none';
+        if (telephoneRef.current) telephoneRef.current.style.outline = 'none';
         if (textAreaRef.current) textAreaRef.current.style.outline = 'none';
       })
       .catch((error) => {

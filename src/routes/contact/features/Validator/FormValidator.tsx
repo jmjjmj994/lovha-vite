@@ -23,42 +23,42 @@ function Validate(
   };
 
   if (firstName.trim() === '') {
-    inputError.firstName = 'First name is required';
+    inputError.firstName = 'Vennligst skriv ditt fornavn';
     firstNameRef.current.style = 'outline: 1px solid red';
   } else {
     firstNameRef.current.style = 'outline:1px solid green';
   }
 
   if (lastName.trim() === '') {
-    inputError.lastName = 'Last name is required';
+    inputError.lastName = 'Vennligst skriv ditt etternavn';
     lastNameRef.current.style = 'outline: 1px solid red';
   } else {
     lastNameRef.current.style = 'outline:1px solid green';
   }
 
   if (!emailRegex.test(email)) {
-    inputError.email = 'Invalid email address';
+    inputError.email = 'Ugyldig e-postadresse';
     emailRef.current.style = 'outline: 1px solid red';
   } else {
     emailRef.current.style = 'outline:1px solid green';
   }
 
   if (!telephoneRegex.test(telephone)) {
-    inputError.telephone = 'Invalid telephone number';
+    inputError.telephone = 'Ugyldig telefon nummer';
     telephoneRef.current.style = 'outline: 1px solid red';
   } else {
     telephoneRef.current.style = 'outline:1px solid green';
   }
 
   if (subject.trim() === '') {
-    inputError.subject = 'Subject is required';
+    inputError.subject = 'Vennligst velg kategori';
     subjectRef.current.style = 'outline: 1px solid red';
   } else {
     subjectRef.current.style = 'outline:1px solid green';
   }
 
   if (textArea.trim() === '') {
-    inputError.textArea = 'Message is required';
+    inputError.textArea = 'Vennligst skriv din melding';
     textAreaRef.current.style = 'outline: 1px solid red';
   } else {
     textAreaRef.current.style = 'outline:1px solid green';

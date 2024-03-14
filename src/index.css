@@ -145,9 +145,14 @@ p {
     width: 80%;
   }
 }
+@media screen and (min-width: 500px) {
+  .about-wrapper {
+    padding-inline: 0;
+  }
+}
 @media screen and (min-width: 1024px) {
   .about-wrapper {
-    width: 60%;
+    width: 80%;
   }
 }
 
@@ -155,13 +160,20 @@ p {
 }
 /* Wrappers for content dependent of components */
 
-/* @media screen and (min-width:768px) {
-  .lovha-team {
-    height: 55vh;
-  }
-} */
 @media screen and (min-width: 1024px) {
   .lovha-team {
-    height: 80vh;
+    height: 65vh;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .lovha-team {
+    height: 75vh;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .lovha-team {
+    height: 90vh;
   }
 }

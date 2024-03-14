@@ -8,7 +8,7 @@ function AboutBanner() {
         className="h-full w-full object-cover"
         src={imgL}
         alt=""
-        srcSet={`${imgS} 480px, ${imgM} 800px, ${imgL} 1200px`}
+        srcSet={`${imgS} 480w, ${imgM} 800w, ${imgL} 1200w`}
       />
     </div>
   );

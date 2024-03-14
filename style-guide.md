@@ -39,9 +39,9 @@
 
 ## Typography
 
-- Font-size-h1: 3.062rem
-- Font-size-h2: 2,438rem
-- Font-size-h3:1.938rem
+- Font-size-h1: 3.062rem, 2.375rem
+- Font-size-h2: 2,438rem, 1.5rem
+- Font-size-h3:1.938rem, 1.3125rem
 - Font-size-h4:1.562rem
 - Body: 1rem
 - Small-text:0.812rem

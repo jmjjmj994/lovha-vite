@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { AppData, AppLayoutData } from './data';
-import sanityClient from '../../client/client';
+
+import Card from '../Card/Card';
+import sanityClient from '../../../client/client';
 
 function AppLayout() {
   const [test, setTest] = useState(null);
@@ -15,18 +16,18 @@ image
       .then((data) => setTest(data))
       .catch(console.error);
   }, []);
-  console.log(test);
+
   return (
     <div className="flex  flex-col items-center">
       <AppBanner />
       <div className="app-wrapper wrapper bg-orange-500 h-full w-full flex flex-col justify-center items-center">
-        <AppCards />
+        <Card />
       </div>
     </div>
   );
 }
 
-function AppCards() {
+/* function AppCards() {
   return (
     <>
       {AppData.map(
@@ -52,7 +53,7 @@ function AppCards() {
       )}
     </>
   );
-}
+} */
 
 function AppBanner() {
   return (

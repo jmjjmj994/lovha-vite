@@ -19,7 +19,7 @@ image
   return (
     <div className="flex  flex-col items-center">
       <AppBanner />
-      <div className="app-layout app-wrapper wrapper bg-orange-500 h-full w-full">
+      <div className="app-wrapper wrapper bg-orange-500 h-full w-full flex flex-col justify-center items-center">
         <AppCards />
       </div>
     </div>

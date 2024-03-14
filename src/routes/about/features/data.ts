@@ -1,12 +1,13 @@
-import imgJørgen from '../../../assets/jørgen.jpg';
-import imgKaeo from '../../../assets/kaeo.jpg';
-import imgMorten from '../../../assets/morten.jpg';
-import imgTobias from '../../../assets/tobias.jpg';
+import imgJørgen from '../../../assets/jørgen-tiny.webp';
+import imgKaeo from '../../../assets/kaeo-tiny.webp';
+import imgMorten from '../../../assets/morten-tiny.webp';
+import imgTobias from '../../../assets/tobias-tiny.webp';
 
 type Team = {
   id: number;
   role: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   image: string;
 };
 
@@ -16,20 +17,24 @@ export const team: Team[] = [
   {
     id: 1,
     role: 'Daglig leder og programmerer',
-    name: 'Kaeophailin Lueangphinyo',
+    firstName: 'Kaeophailin',
+    lastName: 'Lueangphinyo',
     image: imgKaeo,
   },
   {
     id: 2,
     role: 'Nest leder og 3D modellerer',
-    name: 'Jørgen Villanueva',
+    firstName: 'Jørgen',
+    lastName: 'Villanueva',
     image: imgJørgen,
   },
   {
     id: 3,
     role: 'Programmerer og 3D modellerer',
-    name: 'Morten Hermansen',
+    firstName: 'Morten',
+    lastName: 'Hermansen',
     image: imgMorten,
   },
-  { id: 4, role: '3D modellerer', name: 'Tobias Ormset', image: imgTobias },
+  { id: 4, role: '3D modellerer', firstName:'Tobias',
+  lastName:'Ormset', image: imgTobias },
 ];

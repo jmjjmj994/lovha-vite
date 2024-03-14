@@ -2,9 +2,9 @@ import { team } from './data';
 
 function Members() {
   return (
-    <section>
+    <section className="bg-purple-500">
       <h2>Vårt Team</h2>
-      <div>
+      <div className="flex justify-center md:justify-between flex-wrap ">
         <MembersCard />
       </div>
     </section>
@@ -14,8 +14,21 @@ function Members() {
 function MembersCard() {
   return (
     <>
-      {team.map(({ id, role, name, image }) => (
-        <p>{role}</p>
+      {team.map(({ id, role, firstName, lastName, image }) => (
+        <article key={id} className='bg-orange-500'>
+          <img
+            className="rounded-full h-[10rem] w-[10rem] object-cover aspect-square m-auto"
+            src={image}
+            alt={`image of ${name}`}
+          />
+          <div>
+            <p className="small-text text-center">{role}</p>
+            <h3 className='text-center'>
+              <span className="block  md:mr-2">{firstName}</span>
+              <span>{lastName}</span>
+            </h3>
+          </div>
+        </article>
       ))}
     </>
   );

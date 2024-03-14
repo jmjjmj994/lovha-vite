@@ -15,7 +15,7 @@ function MembersCard() {
   return (
     <>
       {team.map(({ id, role, firstName, lastName, image }) => (
-        <article key={id} className='bg-orange-500'>
+        <article key={id} className="bg-orange-500">
           <img
             className="rounded-full h-[10rem] w-[10rem] object-cover aspect-square m-auto"
             src={image}
@@ -23,9 +23,9 @@ function MembersCard() {
           />
           <div>
             <p className="small-text text-center">{role}</p>
-            <h3 className='text-center'>
-              <span className="block  md:mr-2">{firstName}</span>
-              <span>{lastName}</span>
+            <h3 className="text-center ">
+              <span className="block">{firstName}</span>
+              <span className="block">{lastName}</span>
             </h3>
           </div>
         </article>

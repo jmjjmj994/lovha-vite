@@ -166,7 +166,7 @@ p {
 }
 /* Wrappers for content dependent of components */
 
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1024px) {
   .lovha-team {
     height: 65vh;
   }
@@ -176,10 +176,10 @@ p {
   .lovha-team {
     height: 75vh;
   }
-}
+} */
 
 @media screen and (min-width: 1500px) {
   .lovha-team {
-    height: 90vh;
+    height: 65vh;
   }
 }

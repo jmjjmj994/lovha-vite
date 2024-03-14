@@ -118,7 +118,6 @@ p {
   grid-template-rows: 5rem 1fr auto;
 }
 
-
 /* ==== Grid ==== */
 
 /* Wrappers for element s which Layout render */
@@ -137,23 +136,32 @@ p {
   width: 100%;
 }
 .about-wrapper {
-  max-width: 90%;
+  max-width: 100%;
+  padding-inline: 10px;
   width: 100%;
 }
-/* @media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .about-wrapper {
-    width: 90%;
+    width: 80%;
   }
-} */
+}
+@media screen and (min-width: 1024px) {
+  .about-wrapper {
+    width: 60%;
+  }
+}
 
 .wrapper {
 }
 /* Wrappers for content dependent of components */
 
-
-/* .lovha-team {
-  background-image: url(/src/assets/alle.jpg);
-  background-size: cover;
-  background-position: center;
-
+/* @media screen and (min-width:768px) {
+  .lovha-team {
+    height: 55vh;
+  }
 } */
+@media screen and (min-width: 1024px) {
+  .lovha-team {
+    height: 80vh;
+  }
+}

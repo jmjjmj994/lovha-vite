@@ -1,4 +1,5 @@
+import AboutLayout from './features/AboutLayout';
 function About() {
-  return null;
+  return <AboutLayout />;
 }
 export default About;

@@ -141,6 +141,11 @@ p {
   max-width: 90%;
   width: 100%;
 }
+.about-wrapper {
+  max-width: 50rem;
+  width: 100%;
+}
+
 .wrapper {
 }
 /* Wrappers for content dependent of components */

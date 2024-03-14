@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AppData, AppLayoutData } from './appLayoutData';
+import { AppData, AppLayoutData } from './data';
 import sanityClient from '../../client/client';
 
 function AppLayout() {

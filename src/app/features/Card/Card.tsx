@@ -1,4 +1,5 @@
 import { AppData, AppLayoutData } from '../data';
+import dummy from '../../../assets/luis-vasconcelos-wxj729MaPRY-unsplash.jpg';
 function AppCards() {
   return (
     <>
@@ -6,26 +7,18 @@ function AppCards() {
         ({ id, image, path, label, title, content }: AppLayoutData) => (
           <article
             key={id}
-            className="bg-bg-secondary-clr flex max-w-[50rem] h-[15rem] w-full mt-20  test"
+            className="bg-bg-secondary-clr  relative flex max-w-[40rem] h-[15rem] w-full mt-20  test"
           >
-            <div className="max-w-[18rem] w-full">
-              <img
-                className="object-cover aspect-square h-full w-full"
-                src="http://unsplash.it/800/800?random&gravity=center"
-                alt=""
-              />
-            </div>
-
-            <div className=" flex grow flex-col relative align-middle">
-              <h2>{title}</h2>
-              <p>{content}</p>
-              <a
-                role="button"
-                className="absolute bottom-0 lg:static bg-blue-B100"
-                href={path}
-              >
-                {label}
-              </a>
+            <img
+              src={dummy}
+              className="absolute w-full h-full object-cover aspect-auto"
+              alt=""
+            />
+            <div className=" w-full z-[1]  flex-col flex items-center justify-center  h-full">
+              <h1 className="text-white">Kort</h1>
+              <button className="bg-blue-B500 px-[20px] py–[20px] text-white text-xl">
+                Les mer
+              </button>
             </div>
           </article>
         )

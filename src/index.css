@@ -2,43 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /*Primary & Secondary*/
-  --clr-primary: hsl(239, 90, 61, 100%);
-  --clr-primary-outlined: hsl(239, 90, 61, 100%);
-  /*Primary & Secondary*/
-
-  /* hover, active*/
-  --clr-primary-eff: hsl(239, 74, 46, 100%);
-  --clr-primary-outlined-eff: hsl(239, 74, 46, 100%);
-  --transition-duration: ease-in 150ms;
-  /* hover, active*/
-
-  /* Background Primary */
-  --bg-primary: hsl(0, 0, 100%, 95%);
-  /* Background Primary */
-
-  /* Neutral */
-  --clr-grey-light: hsl(0, 0, 95, 100%);
-  --clr-blue-light: hsl(240, 90, 96, 100%);
-  /* Neutral */
-
-  /* Neutral (hover,active,focus) */
-  --clr-grey-light-hover: hsl(0, 0, 95, 100%);
-  --clr-grey-light-active: hsl(0, 0, 89, 10%);
-  --clr-blue-light-hover: hsl(240, 93, 94, 100%);
-  --clr-blue-light-active: hsl(239, 90, 88, 100%);
-  /* Neutral (hover,active,focus) */
-
-  /*Form*/
-  --input-bg: hsl(0, 0, 85, 95%);
-  /*Form*/
-
-  /* Headers */
-  --headers-clr: hsl(0, 0%, 23%);
-  /* Headers */
-}
-
 /* ==== Reset ==== */
 *,
 *::before,
@@ -161,11 +124,13 @@ p {
 .app-wrapper {
   max-width: 90%;
   width: 100%;
+  outline: 1px solid orange;
 }
 .about-wrapper {
   max-width: 100%;
   padding-inline: 10px;
   width: 100%;
+  outline: 1px solid orange;
 }
 @media screen and (min-width: 768px) {
   .about-wrapper {

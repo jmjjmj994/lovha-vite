@@ -8,7 +8,11 @@ const navbarLinks: NavbarLinks[] = [
   { id: 2, label: 'Spill', path: '#' },
   { id: 3, label: 'Prosjekter', path: '#' },
   { id: 4, label: 'Om oss', path: '/about' },
-  { id: 5, label: 'Kontakt', path: '/contact' },
+  {
+    id: 5,
+    label: 'Kontakt',
+    path: '/contact',
+  },
 ];
 
 export default navbarLinks;

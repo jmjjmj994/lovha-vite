@@ -32,7 +32,7 @@ function Navbar({ active, handleToggler }: NavbarProps) {
 
   return (
     <nav
-      className={`bg-orange-500 fixed flex flex-col  right-0 top-0 w-full h-full lg:static lg:w-auto lg:flex-row lg:h-auto ${
+      className={`bg-bg-secondary-clr z-[1]  fixed flex flex-col  right-0 top-0 w-full h-full lg:static lg:w-auto lg:flex-row lg:h-auto ${
         active ? 'translate-x-0' : 'translate-x-full'
       }
       lg:translate-x-0
@@ -44,14 +44,31 @@ function Navbar({ active, handleToggler }: NavbarProps) {
           className="self-end"
           onClick={() => handleToggler()}
         >
-          close
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
         </button>
       </div>
 
-      <ul className="h-full w-full flex flex-col pl-20 pt-20 lg:pl-0 lg:pt-0 lg:flex-row ">
-        {navbarLinks.map(({ id, label, path }) => (
-          <li className="text-xl mt-12 lg:mt-0" key={id}>
-            <Link to={path} onClick={() => close()}>
+      <ul className="h-full w-full flex flex-col  pl-20 pt-20 lg:pl-0 lg:pt-0 lg:flex-row  lg:justify-center lg:gap-[30px]">
+        {navbarLinks.map(({ id, label, path}) => (
+          <li className={`text-xl mt-12 lg:mt-0 lg:text-sm   font-mono `} key={id}>
+            <Link
+            
+              to={path}
+              onClick={() => close()}
+            >
               {label}
             </Link>
           </li>

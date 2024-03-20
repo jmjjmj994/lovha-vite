@@ -7,11 +7,11 @@ function AppCards() {
         ({ id, image, path, label, title, content }: AppLayoutData) => (
           <article
             key={id}
-            className="bg-bg-secondary-clr  relative flex max-w-[40rem] h-[15rem] w-full mt-20  test"
+            className="bg-bg-secondary-clr  relative flex max-w-[70%] w-full  mt-20  test"
           >
             <img
               src={dummy}
-              className="absolute w-full h-full object-cover aspect-auto"
+              className="w-full  h-full object-cover aspect-auto"
               alt=""
             />
             <div className=" w-full z-[1]  flex-col flex items-center justify-center  h-full">

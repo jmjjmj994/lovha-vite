@@ -9,12 +9,15 @@ function AppCards() {
             key={id}
             className="bg-bg-secondary-clr  relative flex max-w-[70%] w-full  mt-20  test"
           >
-            <img
-              src={dummy}
-              className="w-full  h-full object-cover aspect-auto"
-              alt=""
-            />
-            <div className=" w-full z-[1]  flex-col flex items-center justify-center  h-full">
+            <div className="w-full max-h-[30rem]">
+              <img
+                src={dummy}
+                className="w-full  h-full object-cover aspect-auto"
+                alt=""
+              />
+            </div>
+
+            <div className="absolute w-full z-[1]  flex-col flex items-center justify-center  h-full">
               <h1 className="text-white">Kort</h1>
               <button className="bg-blue-B500 px-[20px] py–[20px] text-white text-xl">
                 Les mer

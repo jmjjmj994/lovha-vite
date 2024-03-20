@@ -32,7 +32,7 @@ function Navbar({ active, handleToggler }: NavbarProps) {
 
   return (
     <nav
-      className={`bg-bg-secondary-clr z-[1]  fixed flex flex-col  right-0 top-0 w-full h-full lg:static lg:w-auto lg:flex-row lg:h-auto ${
+      className={`bg-bg-secondary-clr z-[2]  fixed flex flex-col  right-0 top-0 w-full h-full lg:static lg:w-auto lg:flex-row lg:h-auto ${
         active ? 'translate-x-0' : 'translate-x-full'
       }
       lg:translate-x-0
